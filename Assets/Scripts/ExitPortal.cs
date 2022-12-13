@@ -22,6 +22,7 @@ public class ExitPortal : MonoBehaviour
             nextSceneIndex = 0;
         }
 
+        FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(nextSceneIndex);      // Current scene +1 go next one
     }
 }
