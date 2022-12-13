@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float rocketForce;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject barrelGo;
     private bool isFlying;
     private bool isAlive = true;
     [SerializeField]private Vector2 deathForce = new Vector2(0,10);
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         Walk();
         RocketOn();
         Die();
+        Shoot();
     }
     void OnMove(InputValue value)
     {
@@ -52,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         if (value.isPressed)
         {
             playerRb.velocity += new Vector2(0f, jumpForce);
-           // playerAnim.SetBool("isJumping", true);
+            playerAnim.SetTrigger("Jump");
         }
     }
     private void Walk()
@@ -93,12 +96,8 @@ public class PlayerMovement : MonoBehaviour
         isFlying = false;
         }
     }
-
-  
-
     void Die()
     {
-
         if (playerCapsuleColl.IsTouchingLayers(LayerMask.GetMask("Enemies")))
         {
             isAlive = false;
@@ -116,6 +115,15 @@ public class PlayerMovement : MonoBehaviour
             isAlive = false;
             playerAnim.SetTrigger("isDead");
             //playerRb.velocity = deathForce;
+        }
+    }
+
+    void Shoot()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            playerAnim.SetTrigger("Shoot");
+            Instantiate(bulletPrefab, barrelGo.transform.position, barrelGo.transform.rotation);
         }
     }
 }
