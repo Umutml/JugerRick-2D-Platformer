@@ -16,6 +16,15 @@ public class Bullet : MonoBehaviour
         transform.localScale = new Vector3(rickTransform.localScale.x, 1, 1);
         bulletRb.velocity = new Vector2(transform.localScale.x * bulletSpeed, 0);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+            //HitDamage
+        }
+        Destroy(gameObject);
+    }
 
 }
 

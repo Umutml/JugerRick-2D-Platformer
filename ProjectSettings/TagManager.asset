@@ -13,14 +13,14 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
+  - Platforms
   - Spike
   - Player
   - Background
   - Enemies
   - Acid
-  - 
-  - 
+  - Bullets
+  - Barrels
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
     locked: 0
   - name: Acid
     uniqueID: 1082411147
+    locked: 0
+  - name: Platform
+    uniqueID: 3693422211
     locked: 0

@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     void OnJump(InputValue value)
     {
         if (!isAlive) return;
-            if (!playerBoxColl.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            if (!playerBoxColl.IsTouchingLayers(LayerMask.GetMask("Platforms")))
         {
             return;
         }
@@ -123,7 +123,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             playerAnim.SetTrigger("Shoot");
-            Instantiate(bulletPrefab, barrelGo.transform.position, barrelGo.transform.rotation);
+            GameObject bulletTemp = Instantiate(bulletPrefab, barrelGo.transform.position, barrelGo.transform.rotation);
+            Destroy(bulletTemp, 1.5f);
         }
     }
 }
