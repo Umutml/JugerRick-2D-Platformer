@@ -98,23 +98,12 @@ public class PlayerMovement : MonoBehaviour
     }
     void Die()
     {
-        if (playerCapsuleColl.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        if (playerCapsuleColl.IsTouchingLayers(LayerMask.GetMask("Enemies", "Spike","Acid")))
         {
             isAlive = false;
             playerAnim.SetTrigger("isDead");
             playerRb.velocity = deathForce;
-        }
-        if (playerCapsuleColl.IsTouchingLayers(LayerMask.GetMask("Spike")))
-        {
-            isAlive = false;
-            playerAnim.SetTrigger("isDead");
-            playerRb.velocity = deathForce;
-        }
-        if (playerCapsuleColl.IsTouchingLayers(LayerMask.GetMask("Acid")))
-        {
-            isAlive = false;
-            playerAnim.SetTrigger("isDead");
-            //playerRb.velocity = deathForce;
+            FindObjectOfType<GameManager>().PlayerProcessDeath();
         }
     }
 

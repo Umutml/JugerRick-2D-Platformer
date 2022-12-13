@@ -21,7 +21,7 @@ TagManager:
   - Acid
   - Bullets
   - Barrels
-  - 
+  - Interact
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Interact
+    uniqueID: 1427217027
     locked: 0
   - name: Enemy
     uniqueID: 1235929551
