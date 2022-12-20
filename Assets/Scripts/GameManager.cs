@@ -52,10 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void TakeLife()
     {
-        playerLives--;
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
-        livesText.text = playerLives.ToString();
+        Invoke(nameof(LoadAfterDelay),1);
     }
 
     private void ResetGameSession()
@@ -63,5 +60,13 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(0);
         Destroy(gameObject);
+    }
+
+    void LoadAfterDelay()
+    {
+        playerLives--;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+        livesText.text = playerLives.ToString();
     }
 }
